@@ -1,3 +1,36 @@
+
+# Volume control
+
+* Volume up/down
+```commandline
+amixer -D pulse sset Master 3277+
+amixer -D pulse sset Master 3277-
+```
+
+* Mute/unmute toggle
+```commandline
+amixer -D pulse sset Master toggle
+```
+
+* check volume percentage
+```commandline
+amixer get Master
+```
+
+* play/pause/next/previous
+```commandline
+rhythmbox-client --play-pause
+rhythmbox-client --previous
+rhythmbox-client --next
+```
+
+# Spring Tool Suite 4 plugins
+http://vrapper.sourceforge.net/update-site/stable
+http://eclipse-color-theme.github.com/update
+http://dl.bintray.com/harawata/eclipse
+http://propedit.sourceforge.jp/eclipse/updates/
+
+
 # Applying .jar to application
 download tar.gz and do the following
 ```commandline
@@ -98,32 +131,6 @@ sudo alternatives --config java
 1 ...
 2 ...
 ```
-
-# Volume control
-
-* Volume up/down
-```commandline
-amixer -D pulse sset Master 3277+
-amixer -D pulse sset Master 3277-
-```
-
-* Mute/unmute toggle
-```commandline
-amixer -D pulse sset Master toggle
-```
-
-* check volume percentage
-```commandline
-amixer get Master
-```
-
-* play/pause/next/previous
-```commandline
-rhythmbox-client --play-pause
-rhythmbox-client --previous
-rhythmbox-client --next
-```
-
 
 
 # Samba
