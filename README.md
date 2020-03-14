@@ -25,11 +25,12 @@ rhythmbox-client --next
 ```
 
 # Spring Tool Suite 4 plugins
+```
 http://vrapper.sourceforge.net/update-site/stable
 http://eclipse-color-theme.github.com/update
 http://dl.bintray.com/harawata/eclipse
 http://propedit.sourceforge.jp/eclipse/updates/
-
+```
 
 # Applying .jar to application
 download tar.gz and do the following
