@@ -1,3 +1,72 @@
+# docker
+
+## Install docker, docker toolbox
+```
+# mac
+download and install  dmg (docker) & pkg (docker toolbox)
+# windows
+# linux
+```
+
+
+## Get Mysql 8.0 image
+MySql Server image tags : 
+
+https://hub.docker.com/r/mysql/mysql-server/tags
+
+```
+docker pull mysql/mysql-server:8.0
+docker images
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql/mysql-server
+docker ps -a
+```
+
+### Unable to connect to 127.0.0.1:3306
+
+http://github.com/docker-library/mysql/issues/275
+
+```
+docker exec -it [container_id] bash
+mysql -u root -p
+  Password: root
+
+mysql> SELECT host, user FROM mysql.user;
+mysql> CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'username'@'%';
+mysql> exit
+```
+
+```
+docker exec -it [container_id] bash
+vim /etc/my.cnf
+  [mysqld]
+  ...
+  secure_file_priv=""
+```
+
+### Move files to docker container
+
+https://stackoverflow.com/questions/22907231/copying-files-from-host-to-docker-container
+```
+docker cp file.csv [container_id]:/var/lib/mysql/SCHEMA_NAME/
+```
+
+```sql
+CREATE TABLE `ANIMAL_INS` (
+  col1 type1,
+  ...
+  colN typeN
+);
+
+LOAD DATA INFILE 'aac_intakes.csv' 
+-- LOAD DATA LOCAL INFILE '/Users/agnt/Downloads/20616_26627_bundle_archive/aac_intakes.csv' 
+INTO TABLE `ANIMAL_INS`
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+```
+
 
 # Volume control
 
