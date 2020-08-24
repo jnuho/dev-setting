@@ -233,8 +233,6 @@ sudo touch share/test.txt
 - setting on Windows
 check network folder
 
-<<<<<<< HEAD
-
 
 # Git command
 git workflows that I often use. It might contain incorrect information. Non-commital on a timeline.
@@ -292,7 +290,6 @@ git push upstream wip/junho
 
 # Git will set up the tracking information during the push.
 git push -u origin <branch>
->>>>>>> 225bd538190104ab6ee3d6b8da57f18d996cdb5f
 ```
 
 # Make a branch track existing remote (upstream) branch
