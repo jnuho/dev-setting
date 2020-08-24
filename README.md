@@ -281,8 +281,11 @@ git push origin wip/sat
 
 # Create remote (upstream) branch by pushing with -u
 push a new local branch to a remote Git repository and track it. 
+
 [update remote if remote branch is not showing up](https://stackoverflow.com/a/24827745)
+
 [push local branch to remote and track it](https://stackoverflow.com/a/1519032)
+
 ```commandline
 git remote update
 
@@ -309,6 +312,7 @@ git checkout --track origin/wip/junho
 
 # fetch remote branch
 [fetch remote branch](https://stackoverflow.com/a/9537923/9122475)
+
 ```commandline
 git checkout wip/sat
 git config --list 
@@ -328,28 +332,22 @@ git push -u origin wip/sat
 # make pull request to upstream remote!
 
 
-
-
-#---
 git remote -r
-  ...
   origin/wip/sat
+  ...
 
 git checkout --track origin/wip/sat
 
 git branch
   master
 * wip/sat
-
-
-
 ```
 
 ### git checkout master
 ![git checkout master](https://github.com/jnuho/linux/blob/master/merge1.JPG?raw=true)
 
 ### git merge bugFix
-![git merge bugFix](https://github.com/fggo/linux/blob/master/merge2.JPG?raw=true)
+![git merge bugFix](https://github.com/jnuho/linux/blob/master/merge2.JPG?raw=true)
 
 ### git checkout bugFix, git merge master
 ![git checkout bugFix; git merge master](https://github.com/jnuho/linux/blob/master/merge3.JPG?raw=true)
@@ -543,6 +541,8 @@ git push --delete origin <branchname>
 git push --delete upstream <branchname>
 ```
 
+
 http://192.168.10.25:9580/process/web/login.do?client_id=1hbaxuob0r60g&secret_key=c2b094c581d0425abb595d04e55b5b5f&os_type=3&stat_token=test_stat_token&redirect_url=https%3A%2F%2Fglobal.rowem.com%2F
+
 
 https://partner-auth-test.passikey.com/process/web/login.do?client_id=1hbaxuob0r60g&secret_key=c2b094c581d0425abb595d04e55b5b5f&os_type=3&stat_token=test_stat_token&redirect_url=https%3A%2F%2Fglobal.rowem.com%2F
