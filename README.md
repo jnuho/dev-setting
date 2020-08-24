@@ -344,12 +344,12 @@ git branch
 ```
 
 ### git checkout master
-![git checkout master](https://raw.githubusercontent.com/jnuho/linux/master/merge1.jpeg)
+![git checkout master](merge1.jpeg)
 ### git merge bugFix
-![git merge bugFix](https://raw.githubusercontent.com/jnuho/linux/master/merge2.jpeg)
+![git merge bugFix](merge2.jpeg)
 
 ### git checkout bugFix, git merge master
-![git checkout bugFix; git merge master](https://raw.githubusercontent.com/jnuho/linux/master/merge3.jpeg)
+![git checkout bugFix; git merge master](merge3.jpeg)
 
 
 REMOTE REPO 'origin' <-> LOCAL
