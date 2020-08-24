@@ -233,6 +233,7 @@ sudo touch share/test.txt
 - setting on Windows
 check network folder
 
+<<<<<<< HEAD
 
 
 # Git command
@@ -545,3 +546,6 @@ git push --delete origin <branchname>
 git push --delete upstream <branchname>
 ```
 
+http://192.168.10.25:9580/process/web/login.do?client_id=1hbaxuob0r60g&secret_key=c2b094c581d0425abb595d04e55b5b5f&os_type=3&stat_token=test_stat_token&redirect_url=https%3A%2F%2Fglobal.rowem.com%2F
+
+https://partner-auth-test.passikey.com/process/web/login.do?client_id=1hbaxuob0r60g&secret_key=c2b094c581d0425abb595d04e55b5b5f&os_type=3&stat_token=test_stat_token&redirect_url=https%3A%2F%2Fglobal.rowem.com%2F
