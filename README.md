@@ -304,6 +304,8 @@ git branch --set-upstream-to=upstream/wip/sat
 
 # Create local branch and make it track existing remote (upstream) branch
 ```commandline
+git fetch --all
+
 # create a local branch named wip/junho, 
 # tracking the remote branch origin/wip/junho
 # When you push your changes the remote branch will be updated.
