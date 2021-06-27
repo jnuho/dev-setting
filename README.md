@@ -66,6 +66,59 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 ```
 
+### Mysql5.7 setup using docker
+
+- Install docker desktop (Win10)
+```
+[NOTE] Docker를 설치하기 전에
+  '작업관리자' > 성능 > 가상화 ('사용')에 사용안함 으로 설정되어 있다면
+  BIOS 설정에서 virtualization(가상화)를 enabled로 바꿔줘야 합니다.
+    → 구글 'how to enable docker virtualization on BIOS setting'
+```
+
+- Docker CLI
+``` sh
+# docker 설치여부 확인
+docker version
+
+# docker 이미지 조회
+docker images
+
+# 이미지 삭제
+docker rmi REPO
+
+# dangling 이미지 조회 및 삭제
+docker images -f dangling=true
+docker images purge
+
+# docker 컨테이너 프로세스 확인
+docker ps -a
+
+
+# docker 이미지를 export 및 import 할 수 있습니다.
+# 이미지 export
+docker save -o .\IMAGE_NAME TAG_NAME
+
+# 이미지 import (해당경로로 이동)
+docker load -i .\IMAGE_NAME
+
+# mysql 5.7
+docker pull mysql:5.7
+docker images
+
+# 'mysql57'을 컨테이너 이름으로 하는 docker 컨테이너 실행
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql57 mysql:5.7
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql/mysql-server
+
+# docker 프로세스 확인
+docker ps -a
+
+# run되는 컨테이너 정지시키기
+docker container pause
+
+# stop된 컨테이너 전부 삭제
+docker container prune
+```
 
 # Volume control
 
