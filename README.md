@@ -120,6 +120,30 @@ docker container pause
 docker container prune
 ```
 
+- 데이터베이스 (스키마) 생성
+```
+MYSQL을 docker로 실행(docker run)혹은 로컬 MYSQL Server가 실행된 상태에서
+MySQL workbench를 실행하려면 database를 만들어야 합니다.
+```
+
+``` sh
+# mysql57 컨테이너 서버에 접속 가능
+# winpty docker exec -it mysql57 //bin//bash
+docker exec -it mysql57 //bin//bash
+
+# 1. Kitematic의 '>_ Exec'에서 커맨드라인을 실행 또는 'docker exec -it mysql57 //bash//bash' 커맨드
+# 2. MYSQL workbench의 sql editor를 열어서 데이터 베이스를 생성(CREATE DATABASE ...;) 및 지정(USE ...;)합니다.
+
+# 다음 커맨드라인을 실행하여 database 'PASSI_KEY'를 생성 및 사용 지정합니다.
+mysql -u root -p
+Enter password: root
+```
+
+``` sql
+CREATE DATABASE /*!32312 IF NOT EXISTS*/STARPASS;
+USE STARPASS;
+```
+
 # Volume control
 
 * Volume up/down
