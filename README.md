@@ -738,7 +738,7 @@ fi
 
 - 깃 log한글 깨짐현상
 ```
-Options > Text > Locale 'ko_KR'
+Options > Text > Locale 'en_US'
 Options > Text > Character Set 'UTF-8'
 ```
 
