@@ -1,30 +1,9 @@
 # docker
 
-## Install docker, docker toolbox
-```
-# mac
-download and install  dmg (docker) & pkg (docker toolbox)
-# windows
-# linux
-```
-
-
-## Get Mysql 8.0 image
-MySql Server image tags : 
-
-https://hub.docker.com/r/mysql/mysql-server/tags
-
-```
-docker pull mysql/mysql-server:8.0
-docker images
-docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql/mysql-server
-docker ps -a
-```
+## Install docker desktop
 
 ### Unable to connect to 127.0.0.1:3306
-
 http://github.com/docker-library/mysql/issues/275
-
 ```
 docker exec -it [container_id] bash
 mysql -u root -p
@@ -102,8 +81,10 @@ docker save -o .\IMAGE_NAME TAG_NAME
 # 이미지 import (해당경로로 이동)
 docker load -i .\IMAGE_NAME
 
-# mysql 5.7
+# download mysql 5.7 image from docker hub
+# image tags: https://hub.docker.com/r/ysql/mysql-server/tags
 docker pull mysql:5.7
+docker pull mysql/mysql-server:8.0
 docker images
 
 # 'mysql57'을 컨테이너 이름으로 하는 docker 컨테이너 실행
@@ -118,6 +99,9 @@ docker container pause
 
 # stop된 컨테이너 전부 삭제
 docker container prune
+
+# stop된 모든 컨테이너 삭제
+docker system prune
 ```
 
 - 데이터베이스 (스키마) 생성
@@ -131,10 +115,8 @@ MySQL workbench를 실행하려면 database를 만들어야 합니다.
 # winpty docker exec -it mysql57 //bin//bash
 docker exec -it mysql57 //bin//bash
 
-# 1. Kitematic의 '>_ Exec'에서 커맨드라인을 실행 또는 'docker exec -it mysql57 //bash//bash' 커맨드
-# 2. MYSQL workbench의 sql editor를 열어서 데이터 베이스를 생성(CREATE DATABASE ...;) 및 지정(USE ...;)합니다.
+# 'docker exec -it mysql57 //bash//bash' 커맨드
 
-# 다음 커맨드라인을 실행하여 database 'PASSI_KEY'를 생성 및 사용 지정합니다.
 mysql -u root -p
 Enter password: root
 ```
@@ -144,7 +126,7 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/STARPASS;
 USE STARPASS;
 ```
 
-# Volume control
+# Linux Volume control
 
 * Volume up/down
 ```commandline
@@ -620,7 +602,147 @@ git push --delete upstream <branchname>
 ```
 
 
-http://192.168.10.25:9580/process/web/login.do?client_id=1hbaxuob0r60g&secret_key=c2b094c581d0425abb595d04e55b5b5f&os_type=3&stat_token=test_stat_token&redirect_url=https%3A%2F%2Fglobal.rowem.com%2F
+## Windows 10 msys2 설치
+
+- [Download](https://github.com/msys2/msys2-installer/releases/download/2021-06-04/msys2-x86_64-20210604.exe)
+
+``` sh
+# install tmux, git
+pacman -S tmux
+pacman -S git
+
+vim ~/.bash_profile
+export HOME=/c/Users/nffz
+source ~/.bash_profile
+```
 
 
-https://partner-auth-test.passikey.com/process/web/login.do?client_id=1hbaxuob0r60g&secret_key=c2b094c581d0425abb595d04e55b5b5f&os_type=3&stat_token=test_stat_token&redirect_url=https%3A%2F%2Fglobal.rowem.com%2F
+- tmux config
+```
+# .tmux.conf
+unbind C-b
+set -g prefix C-a
+
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+set -g mouse on
+```
+
+- vim config
+```
+# .vimrc
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 14
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h10:cANSI
+  endif
+endif
+
+syntax on
+set background=dark
+set lines=50 columns=100
+
+winpos 800 100
+
+
+set backspace=indent,eol,start
+set listchars=space:.,tab:>-,trail:.,extends:>,precedes:<
+" eol:$
+
+" hi SpecialKey ctermfg=grey guifg=grey70
+" hi Whitespace ctermbg=red guibg=red
+
+set list
+
+
+set nu
+
+nnoremap zz :update<CR>
+
+set enc=utf-8
+set fileencodings=utf-8,cp949
+set langmenu=cp949
+
+set tabstop=4
+set shiftwidth=4
+
+inoremap jj <esc>
+inoremap ㅓㅓ <esc>
+
+" show indent line
+" let g:indentLine_char = '|'
+
+noremap <F11> :set list!<CR>
+
+nnoremap yy yy"+yy
+vnoremap y ygv"+y
+
+colorscheme morning
+```
+
+- git config display branch
+```
+# /home/유저이름/.bashrc
+# https://stackoverflow.com/a/64934557
+
+if test -f ~/.config/git/git-prompt.sh
+then
+    . ~/.config/git/git-prompt.sh
+else
+    PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]' # set window title
+    PS1="$PS1"'\n'                 # new line
+    PS1="$PS1"'\[\033[32m\]'       # change to green
+    PS1="$PS1"'\u@\h '             # user@host<space>
+    PS1="$PS1"'\[\033[35m\]'       # change to purple
+    PS1="$PS1"'$MSYSTEM '          # show MSYSTEM
+    PS1="$PS1"'\[\033[33m\]'       # change to brownish yellow
+    PS1="$PS1"'\w'                 # current working directory
+    if test -z "$WINELOADERNOEXEC"
+    then
+        GIT_EXEC_PATH="$(git --exec-path 2>/dev/null)"
+        COMPLETION_PATH="${GIT_EXEC_PATH%/libexec/git-core}"
+        COMPLETION_PATH="${COMPLETION_PATH%/lib/git-core}"
+        COMPLETION_PATH="$COMPLETION_PATH/share/git/completion"
+        if test -f "$COMPLETION_PATH/git-prompt.sh"
+        then
+            . "$COMPLETION_PATH/git-completion.bash"
+            . "$COMPLETION_PATH/git-prompt.sh"
+            PS1="$PS1"'\[\033[36m\]'  # change color to cyan
+            PS1="$PS1"'`__git_ps1`'   # bash function
+        fi
+    fi
+    PS1="$PS1"'\[\033[0m\]'        # change color
+    PS1="$PS1"'\n'                 # new line
+    PS1="$PS1"'$ '                 # prompt: always $
+fi
+
+MSYS2_PS1="$PS1"               # for detection by MSYS2 SDK's bash.basrc
+
+# Evaluate all user-specific Bash completion scripts (if any)
+if test -z "$WINELOADERNOEXEC"
+then
+    for c in "$HOME"/bash_completion.d/*.bash
+    do
+        # Handle absence of any scripts (or the folder) gracefully
+        test ! -f "$c" ||
+        . "$c"
+    done
+fi
+```
+
+- 깃 log한글 깨짐현상
+```
+Options > Text > Locale 'ko_KR'
+Options > Text > Character Set 'UTF-8'
+```
+
+- 깃 윈도우 환경
+```sh
+git config --globalcore.autocrlf true
+```
