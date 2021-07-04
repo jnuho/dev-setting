@@ -602,24 +602,21 @@ git push --delete upstream <branchname>
 ```
 
 
-## Windows 10 msys2 설치
+## Windows 10 [git-bash 세팅](https://gist.github.com/DeanPDX/acff533cff0cfbda2761d1e62e8cb1a7)
 
-- [Download](https://github.com/msys2/msys2-installer/releases/download/2021-06-04/msys2-x86_64-20210604.exe)
+- Install [git-bash](https://git-scm.com/download/win) for windows
+- Install [msys2](https://github.com/msys2/msys2-installer/releases/download/2021-06-04/msys2-x86_64-20210604.exe)
 
 ``` sh
-# install tmux, git
+# run msys2 and install tmux
 pacman -S tmux
 pacman -S git
-
-vim ~/.bash_profile
-export HOME=/c/Users/nffz
-source ~/.bash_profile
 ```
+- Copy tmux and msys-event binaries from msys2 bin folder (probably C:\msys64\usr\bin) to git bash bin folder (probably C:\Program Files\Git\usr\bin).
 
-
-- tmux config
+- tmux configuration
 ```
-# .tmux.conf
+# /c/Users/username/.tmux.conf
 unbind C-b
 set -g prefix C-a
 
@@ -631,9 +628,9 @@ bind -n M-Down select-pane -D
 set -g mouse on
 ```
 
-- vim config
+- vim configuration
 ```
-# .vimrc
+# /c/Users/username/.vimrc
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Inconsolata\ 14
@@ -650,7 +647,6 @@ set lines=50 columns=100
 
 winpos 800 100
 
-
 set backspace=indent,eol,start
 set listchars=space:.,tab:>-,trail:.,extends:>,precedes:<
 " eol:$
@@ -659,8 +655,6 @@ set listchars=space:.,tab:>-,trail:.,extends:>,precedes:<
 " hi Whitespace ctermbg=red guibg=red
 
 set list
-
-
 set nu
 
 nnoremap zz :update<CR>
@@ -686,63 +680,13 @@ vnoremap y ygv"+y
 colorscheme morning
 ```
 
-- git config display branch
-```
-# /home/유저이름/.bashrc
-# https://stackoverflow.com/a/64934557
-
-if test -f ~/.config/git/git-prompt.sh
-then
-    . ~/.config/git/git-prompt.sh
-else
-    PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]' # set window title
-    PS1="$PS1"'\n'                 # new line
-    PS1="$PS1"'\[\033[32m\]'       # change to green
-    PS1="$PS1"'\u@\h '             # user@host<space>
-    PS1="$PS1"'\[\033[35m\]'       # change to purple
-    PS1="$PS1"'$MSYSTEM '          # show MSYSTEM
-    PS1="$PS1"'\[\033[33m\]'       # change to brownish yellow
-    PS1="$PS1"'\w'                 # current working directory
-    if test -z "$WINELOADERNOEXEC"
-    then
-        GIT_EXEC_PATH="$(git --exec-path 2>/dev/null)"
-        COMPLETION_PATH="${GIT_EXEC_PATH%/libexec/git-core}"
-        COMPLETION_PATH="${COMPLETION_PATH%/lib/git-core}"
-        COMPLETION_PATH="$COMPLETION_PATH/share/git/completion"
-        if test -f "$COMPLETION_PATH/git-prompt.sh"
-        then
-            . "$COMPLETION_PATH/git-completion.bash"
-            . "$COMPLETION_PATH/git-prompt.sh"
-            PS1="$PS1"'\[\033[36m\]'  # change color to cyan
-            PS1="$PS1"'`__git_ps1`'   # bash function
-        fi
-    fi
-    PS1="$PS1"'\[\033[0m\]'        # change color
-    PS1="$PS1"'\n'                 # new line
-    PS1="$PS1"'$ '                 # prompt: always $
-fi
-
-MSYS2_PS1="$PS1"               # for detection by MSYS2 SDK's bash.basrc
-
-# Evaluate all user-specific Bash completion scripts (if any)
-if test -z "$WINELOADERNOEXEC"
-then
-    for c in "$HOME"/bash_completion.d/*.bash
-    do
-        # Handle absence of any scripts (or the folder) gracefully
-        test ! -f "$c" ||
-        . "$c"
-    done
-fi
-```
-
-- 깃 log한글 깨짐현상
-```
-Options > Text > Locale 'en_US'
-Options > Text > Character Set 'UTF-8'
-```
-
-- 깃 윈도우 환경
+- git 한글 문제
 ```sh
+# ignore ^M
 git config --globalcore.autocrlf true
+
+# git log, git commit 한글 깨짐현상
+# Options > Text > Locale 'en_US'
+# Options > Text > Character Set 'UTF-8'
 ```
+
