@@ -534,3 +534,95 @@ COPY ./ ./
 
 CMD ["npm", "start"]
 ```
+
+- Project using Docker compose
+
+```
+# 1
+web -> Container1[Node App+ Redis (visits=1)]
+	-> Container2[Node App+ Redis 99]
+	...
+	-> ContainerN[Node App+ Redis 5]
+
+# 2
+web -> Container1[Node App]
+	...
+	-> ContainerN[Node App] -> Continaer[Redis]
+```
+
+```json
+// package.json
+{
+	"dependencies": {
+		"express": "*",
+		"redis": "2.8.0"
+	},
+	"scripts": {
+		"start": "node index.js"
+	}
+}
+```
+
+```js
+const express = require('express');
+const redis = require('redis');
+
+const app = express();
+// connection redis server
+const client = redis.createClient();
+client.set('visits', 0);
+
+app.get('/', (req, res) => {
+	client.get('visits', (err, visits) => {
+		res.send('Number of visits is ' + visits);
+		client.set('visits', parseInt(visits) + 1);
+	});
+});
+
+app.listen(8081, () => {
+	console.log('Listening on port 8081');
+});
+```
+
+```Dockerfile
+# dockerfile for node
+FROM node:alpine
+
+WORKDIR '/app'
+
+# only build image when package.json changes
+COPY package.json .
+RUN npm install
+COPY ./ ./
+
+CMD["npm", "start"]
+```
+```sh
+# image id returns without tags
+docker build .
+# instead of id set tags for the image
+docker build -t username/visits:latest .
+
+# error connecting to redis(server not running)
+docker run username/visits
+
+# run separate redis server
+docker run redis
+# still same error connecting to redis
+# because each container is isolated from each other
+# need networking infrastructure
+docker run username/visits
+
+
+# Options for connecting these Containers
+# 1. Use Docker CLI's network features (not practical)
+# 2. Use Dcoker compose
+
+```
+
+* Docker compose
+
+- Separate CLI that gets installed along with Docker 
+- Used to start up multiple Docker containers at the same time
+- Automates some of the long-winded arguments we were passing to 'docker run'
+
