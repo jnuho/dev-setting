@@ -29,7 +29,7 @@ docker run busybox ls
 
 # Override not working because hello-world image does not provide file system
 # only hello-world single file exists inside the file system
-docker run hello-world echo hi there 
+docker run hello-world echo hi there
 docker run hello-world ls
 
 # running container process
@@ -48,6 +48,7 @@ docker ps
 ``` sh
 # create container
 docker create hello-world
+
 # start container (-a: show output)
 docker start -a {id}
 ```
