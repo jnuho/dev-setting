@@ -2,7 +2,7 @@
 
 - 앱 다운로드
 
-[링크](itms-services://?action=download-manifest&url=https://dl.dropboxusercontent.com/s/zt3ahfe6pdvlxhu/apnsguide.plist)
+```itms-services://?action=download-manifest&url=https://dl.dropboxusercontent.com/s/zt3ahfe6pdvlxhu/apnsguide.plist```
 
 ## Install docker desktop
 
