@@ -1,0 +1,6 @@
+
+Host starpass
+	User starpass
+	HostName 210.116.91.135
+	Port 22000
+	IdentityFile /home/nffz/starpass_local/starpass-info/aws/account/starpass/starpass-2-key.ppk
