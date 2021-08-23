@@ -1,6 +1,28 @@
 
-Host starpass
+Host star
 	User starpass
 	HostName 210.116.91.135
 	Port 22000
-	IdentityFile /home/nffz/starpass_local/starpass-info/aws/account/starpass/starpass-2-key.ppk
+
+Host junho
+	User ubuntu
+	HostName 13.209.76.95
+	Port 22
+	IdentityFile /home/nffz/Downloads/etc/junho-redis-ec2-test.pem
+
+Host m-k8s
+	User root
+	HostName 127.0.0.1
+	Port 60010
+Host w1-k8s
+	User root
+	HostName 127.0.0.1
+	Port 60101
+Host w2-k8s
+	User root
+	HostName 127.0.0.1
+	Port 60102
+Host w3-k8s
+	User root
+	HostName 127.0.0.1
+	Port 60103
