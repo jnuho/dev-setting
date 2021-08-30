@@ -695,3 +695,12 @@ git config --globalcore.autocrlf true
 ```
 
 
+- 우분투 터미널 [raise or open](https://askubuntu.com/a/200935)
+  - .sh스크립트 생성
+  - 설정 > 키보드 Shortcut : /home/$USER/raiseterminal.sh
+
+```sh
+sudo apt install xdotool
+sudo apt install tmux
+echo -e $'if ps aux | grep "[g]nome-terminal" > /dev/null\n then xdotool windowactivate $(xdotool search --onlyvisible --class gnome-terminal)\n else gnome-terminal --geometry 100x50+1100+500 -- tmux &\nfi' > ~/raiseterminal.sh && chmod +x ~/raiseterminal.sh
+```
