@@ -4,16 +4,16 @@ Host star
 	Port 22000
 
 Host junho
-	User ubuntu
-	HostName 13.209.76.95
+	User centos
+	HostName 3.36.70.82
 	Port 22
-	IdentityFile C:\Users\feelon2\Downloads\junho-redis-ec2-test.pem
+	IdentityFile /home/foo/Downloads/junho-centos.pem
 
 # ssh starpass-aws-bastion
 Host starpass-aws-bastion
   User ec2-user
   HostName ec2-13-124-151-87.ap-northeast-2.compute.amazonaws.com
-  IdentityFile C:\Users\feelon2\starpass_local\starpass-info\aws\account\starpass\rowem-starpass.pem 
+  IdentityFile /home/foo/starpass_local/starpass-info/aws/account/starpass/rowem-starpass.pem 
 
 # ssh starpass-aws-2-bastion
 Host starpass-aws-2-bastion
@@ -24,19 +24,34 @@ Host starpass-aws-2-bastion
 Host starpass-aws-scouter
   User ec2-user
   HostName 13.124.147.190
-  IdentityFile C:\Users\feelon2\starpass_local\starpass-info\aws\account\starpass\rowem-starpass.pem 
+  IdentityFile /home/foo/starpass_local/starpass-info/aws/account/starpass/rowem-starpass.pem 
 
 # starpass-rams-through-bastion
 Host starpass-aws-admin-a
   User ec2-user
   HostName 172.20.0.164
-  IdentityFile C:\Users\feelon2\starpass_local\starpass-info\aws\account\starpass\rowem-starpass.pem 
+  IdentityFile /home/foo/starpass_local/starpass-info/aws/account/starpass/rowem-starpass.pem 
   ProxyCommand ssh -A starpass-aws-bastion -W %h:%p
 
 # starpass-was-through-bastion
 Host starpass-aws-was-00
   User ec2-user
   HostName 172.20.10.117
-  IdentityFile C:\Users\feelon2\starpass_local\starpass-info\aws\account\starpass\rowem-starpass.pem 
+  IdentityFile /home/foo/starpass_local/starpass-info/aws/account/starpass/rowem-starpass.pem 
   #ProxyCommand ssh starpass-aws-bastion nc %h %p 2> /dev/null
   ProxyCommand ssh -A starpass-aws-bastion -W %h:%p
+
+
+# ssh dev-infra-bastion
+Host dev-infra-bastion
+  User ec2-user
+  HostName 3.37.104.165
+  IdentityFile /home/foo/starpass_local/dev-infra-info/security/dev-infra.pem
+
+# starpass-was-through-bastion
+Host dev-infra-jenkins
+  User ec2-user
+  HostName 10.10.10.63
+  IdentityFile /home/foo/starpass_local/dev-infra-info/security/dev-infra.pem
+  #ProxyCommand ssh starpass-aws-bastion nc %h %p 2> /dev/null
+  ProxyCommand ssh -A dev-infra-bastion -W %h:%p

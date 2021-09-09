@@ -704,3 +704,35 @@ sudo apt install xdotool
 sudo apt install tmux
 echo -e $'if ps aux | grep "[g]nome-terminal" > /dev/null\n then xdotool windowactivate $(xdotool search --onlyvisible --class gnome-terminal)\n else gnome-terminal --geometry 100x50+1100+500 -- tmux &\nfi' > ~/raiseterminal.sh && chmod +x ~/raiseterminal.sh
 ```
+
+- vim yank to clipboard
+
+```sh
+# install +clipboard feature
+sudo apt install vim-gtk3
+```
+
+- conda in zsh
+```sh
+sudo apt install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
+
+# Verify data integrity with SHA-256
+sha256sum Anaconda3-2021.05-Linux-x86_64.sh
+
+# Install conda
+bash Anaconda3-2021.05-Linux-x86_64.sh
+
+vim .profile
+PATH="$HOME/anaconda3/bin:$PATH"
+vim .zshrc
+source $HOME/.profile
+
+source .zshrc
+```
+
+- jupyer in vscode
+  - [convert ipynb to other format](https://ipython.org/ipython-doc/3/notebook/nbconvert.html)
+```sh
+ipython nbconvert --to markdown python_coding_test.ipynb
+```
