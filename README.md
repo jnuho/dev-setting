@@ -737,7 +737,9 @@ cd ~/$PROJECT_DIR
 conda create -n env-01 python=3.7 scipy numpy nbconvert
 conda init zsh
 conda activate env-01
-conda env remove -n env-01
+conda config --set auto_activate_base false
+# conda deactivate env-01
+# conda env remove -n env-01
 ```
 
 - jupyer in vscode
