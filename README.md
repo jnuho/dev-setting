@@ -729,6 +729,15 @@ vim .zshrc
 source $HOME/.profile
 
 source .zshrc
+
+
+# create conda env
+# https://code.visualstudio.com/docs/python/environments
+cd ~/$PROJECT_DIR
+conda create -n env-01 python=3.7 scipy numpy nbconvert
+conda init zsh
+conda activate env-01
+conda env remove -n env-01
 ```
 
 - jupyer in vscode
