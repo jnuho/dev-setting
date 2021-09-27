@@ -734,7 +734,7 @@ source .zshrc
 # create conda env
 # https://code.visualstudio.com/docs/python/environments
 cd ~/$PROJECT_DIR
-conda create -n env-01 python=3.7 scipy numpy nbconvert
+conda create -n env-01 python=3.9 ipykernel scipy numpy nbconvert
 conda init zsh
 conda activate env-01
 conda config --set auto_activate_base false
