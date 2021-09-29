@@ -747,3 +747,10 @@ conda config --set auto_activate_base false
 ```sh
 ipython nbconvert --to markdown python_coding_test.ipynb
 ```
+
+- pdfcrop
+```sh
+sudo apt-get install texlive-extra-utils
+# left top right bottom format
+pdfcrop --margins '15 15 15 15' input.pdf output.pdf
+```
