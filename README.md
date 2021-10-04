@@ -730,7 +730,6 @@ source $HOME/.profile
 
 source .zshrc
 
-
 # create conda env
 # https://code.visualstudio.com/docs/python/environments
 cd ~/$PROJECT_DIR
@@ -752,5 +751,12 @@ ipython nbconvert --to markdown python_coding_test.ipynb
 ```sh
 sudo apt-get install texlive-extra-utils
 # left top right bottom format
-pdfcrop --margins '15 15 15 15' input.pdf output.pdf
+pdfcrop --margins '12 10 12 10' input.pdf output.pdf
+```
+
+- 맥에서 만든 zip파일 한글깨짐
+  - https://hamonikr.org/board_bFBk25/14127
+
+```sh
+unzip -O cp949 filename.zip
 ```
