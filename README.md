@@ -713,8 +713,7 @@ sudo apt install vim-gtk3
 ```
 
 - conda in zsh
-```sh
-sudo apt install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+```sh sudo apt install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
 
 # Verify data integrity with SHA-256
