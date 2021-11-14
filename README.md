@@ -1,9 +1,5 @@
 # docker
 
-- 앱 다운로드
-
-```itms-services://?action=download-manifest&url=https://dl.dropboxusercontent.com/s/zt3ahfe6pdvlxhu/apnsguide.plist```
-
 ## Install docker desktop
 
 ### Unable to connect to 127.0.0.1:3306
@@ -92,8 +88,9 @@ docker pull mysql/mysql-server:8.0
 docker images
 
 # 'mysql57'을 컨테이너 이름으로 하는 docker 컨테이너 실행
-docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql57 mysql:5.7
-docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql/mysql-server
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql57 mysql:5.7 --lower_case_names
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql:8.0 --lower_case_names
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql/mysql-server --lower_case_names
 
 # docker 프로세스 확인
 docker ps -a
