@@ -756,3 +756,15 @@ pdfcrop --margins '12 10 12 10' input.pdf output.pdf
 ```sh
 unzip -O cp949 filename.zip
 ```
+
+
+
+- pdf 홀짝으로 나눠서 각각 수정 후 merge
+
+```
+pdftk A=토비1_cr.pdf cat Aodd output 토비1_cr_odd.pdf
+pdftk A=토비2_cr.pdf cat Aeven output 토비2_cr_even.pdf
+pdfcrop --margins '-25 -15 0 0' 토비1_cr_odd.pdf 토비1_cr_odd_final.pdf
+pdfcrop --margins '0 -15 -25 0' 토비1_cr_even.pdf 토비1_cr_even_final.pdf
+pdftk A=토비1_cr_odd_final.pdf B=토비1_cr_even_final.pdf shuffle A B output 토비1_cr_final.pdf
+```
