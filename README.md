@@ -88,9 +88,9 @@ docker pull mysql/mysql-server:8.0
 docker images
 
 # 'mysql57'을 컨테이너 이름으로 하는 docker 컨테이너 실행
-docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql57 mysql:5.7 --lower_case_names
-docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql:8.0 --lower_case_names
-docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql/mysql-server --lower_case_names
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql57 mysql:5.7 --lower_case_table_names=1
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql:8.0 --lower_case_table_names=1
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql8 mysql/mysql-server --lower_case_table_names=1
 
 # docker 프로세스 확인
 docker ps -a
