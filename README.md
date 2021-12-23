@@ -768,3 +768,9 @@ pdfcrop --margins '-25 -15 0 0' 토비1_cr_odd.pdf 토비1_cr_odd_final.pdf
 pdfcrop --margins '0 -15 -25 0' 토비1_cr_even.pdf 토비1_cr_even_final.pdf
 pdftk A=토비1_cr_odd_final.pdf B=토비1_cr_even_final.pdf shuffle A B output 토비1_cr_final.pdf
 ```
+
+- idea plugin
+  - code glance
+  - rainbow brackets
+  - pmd
+  - QAPlug
