@@ -774,3 +774,21 @@ pdftk A=토비1_cr_odd_final.pdf B=토비1_cr_even_final.pdf shuffle A B output 
   - rainbow brackets
   - pmd
   - QAPlug
+
+
+- 카카오톡 [설치](https://ubuntucar.tistory.com/47)
+
+```shell
+sudo apt install wine-stable cabextract
+WINEARCH=win32 WINEPREFIX=~/.wine wine wineboot
+
+wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+chmod +x winetricks
+./winetricks --optout
+
+LANG="ko_KR.UTF-8" wine-stable KakaoTalk_Setup.exe
+
+```
+
+
+
