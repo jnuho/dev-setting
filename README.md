@@ -754,7 +754,7 @@ pdfcrop --margins '12 10 12 10' input.pdf output.pdf
   - https://hamonikr.org/board_bFBk25/14127
 
 ```sh
-unzip -O cp949 filename.zip
+unzip -O cp949 filename.zip -d filename
 ```
 
 
