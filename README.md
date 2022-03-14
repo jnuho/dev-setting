@@ -788,6 +788,8 @@ chmod +x winetricks
 
 LANG="ko_KR.UTF-8" wine-stable KakaoTalk_Setup.exe
 
+vim /home/foo/.local/share/applications/wine/카카오톡.desktop
+  Exec=env WINEPREFIX="/home/foo/.wine" LANG="ko_KR.UTF-8" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/foo/.wine/do    sdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/카카오톡.lnk 
 ```
 
 
